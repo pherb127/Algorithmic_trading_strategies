@@ -37,6 +37,10 @@ MA : A Moving Average (MA) is a technical analysis tool that averages a security
        * Identify Trends: Determine the direction and strength of a trend.
        * Generate Signals: Provide buy or sell signals when moving averages cross over.
      A Simple Moving Average (SMA) is easily computed bu take the Price of the asset during a time range i divided by the number of periods.
+
+Documentation :
+    ta.momentum/trend : https://technical-analysis-library-in-python.readthedocs.io/en/latest/ta.html
+
 '''
 
 import quantstats as qs  
