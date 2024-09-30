@@ -1,16 +1,42 @@
 '''
-The goal of this project is to familiarize myself with Algorithmic Trading by implementing myself the momentum strategy in quantitative trading. 
-This project was mainly inspired by this existing github project : https://github.com/cengizozel/Algorithmic-Trading-In-Python/blob/main/Projects/2%20-%20Building%20A%20Quantitative%20Momentum%20Investing%20Strategy/002_quantitative_momentum_strategy.ipynb,
-but note that much liberty was taken while implementing the code ! Have fun and if you have any question do not hesitate to reach out :
+Purpose :
+The goal of this project is to familiarize myself with Algorithmic Trading by implementing myself 
+the momentum strategy in quantitative trading. This project was mainly inspired by this existing github project :
+ https://github.com/cengizozel/Algorithmic-Trading-In-Python/blob/main/Projects/2%20-%20Building%20A%20Quantitative%20Momentum%20Investing%20Strategy/002_quantitative_momentum_strategy.ipynb,
+and many other online sources, but note that much liberty was taken while implementing the code ! 
+Have fun and if you have any question do not hesitate to reach out!
+
+Prerequisites :
+Python Version: Ensure you have Python 3.7 or higher installed.
+Virtual Environment: It's recommended to use a virtual environment to manage dependencies.
+Libraries : you will also need seaborn, quantstats and ta libraries
+
+Explanation of the momentum strategy : 
+The momentum trading strategy is a popular approach in financial markets where traders aim to capitalize
+ on the continuance of existing trends in asset prices. The fundamental idea is that assets which have been increasing 
+ in price are likely to continue rising, and those decreasing are likely to continue falling. 
+ This strategy leverages market psychology and herd behavior, exploiting the tendency of investors to follow the majority.
+
+
 
 Appendix :
+Momentum : Momentum in trading refers to the rate at which the price of an asset is moving in a particular direction.
+           It is based on the concept that price movements can persist in one direction for a significant period due to 
+           investor behavior and market dynamics.
 
-RSI : The Relative Strength Index (RSI) is a popular momentum oscillator used in technical analysis to measure the speed and change of price movements of an asset. 
-      It oscillates between 0 and 100 and is used to identify overbought or oversold conditions in the market.
+RSI : The Relative Strength Index (RSI) is a popular momentum oscillator used in technical analysis to measure the speed and
+      change of price movements of an asset. It oscillates between 0 and 100 and is used to identify overbought or oversold 
+      conditions in the market.
         * Overbought Condition: When the RSI value is above 70, it suggests that the asset may be overbought and could be due for a price correction downward.
         * Oversold Condition : When the RSI value is below 30, it indicates that the asset may be oversold and could be due for a price rebound upward.
-
-
+      In the context of the Momentum-Based Trend Following strategy, the RSI helps confirm the strength of a trend and filters out potential false signals.
+        
+MA : A Moving Average (MA) is a technical analysis tool that averages a security's price over a specified time frame, 
+     which can be adjusted to suit the trader's preference. As new price data becomes available, the average moves forward, 
+     hence the term "moving" average. They are used to :
+       * Identify Trends: Determine the direction and strength of a trend.
+       * Generate Signals: Provide buy or sell signals when moving averages cross over.
+     A Simple Moving Average (SMA) is easily computed bu take the Price of the asset during a time range i divided by the number of periods.
 '''
 
 import quantstats as qs  
@@ -117,7 +143,7 @@ if __name__ == "__main__":
 
 def optimize_parameters(symbol, start_date, end_date):
     results = []
-    sma_short_range = range(10, 60, 10)
+    sma_short_range = range(10, 60, 10) 
     sma_long_range = range(100, 250, 50)
     rsi_upper_range = range(65, 85, 5)
     rsi_lower_range = range(15, 35, 5)
