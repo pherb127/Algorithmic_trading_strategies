@@ -44,8 +44,6 @@ Documentation :
 '''
 
 import quantstats as qs  
-
-
 import pandas as pd
 import numpy as np
 import yfinance as yf
@@ -127,24 +125,6 @@ class MomentumTrendStrategy:
         qs.plots.drawdown(returns)
 
 
-if __name__ == "__main__":
-    # Define the asset and time period
-    symbol = 'AAPL'  # Apple Inc.
-    start_date = '2015-01-01'
-    end_date = '2023-01-01'
-
-    # Instantiate the strategy
-    strategy = MomentumTrendStrategy(symbol, start_date, end_date)
-
-    # Run backtest
-    strategy.backtest()
-
-    # Get performance metrics and plots
-    strategy.get_performance_metrics()
-    strategy.plot_equity_curve()
-    strategy.plot_drawdowns()
-
-
 def optimize_parameters(symbol, start_date, end_date):
     results = []
     sma_short_range = range(10, 60, 10) 
@@ -182,12 +162,7 @@ def optimize_parameters(symbol, start_date, end_date):
     best_result = results_df.loc[results_df['total_return'].idxmax()]
     print("Best Parameters:")
     print(best_result)
-    return results_df
-
-
-if __name__ == "__main__":
-    # Optimize parameters
-    results_df = optimize_parameters(symbol, start_date, end_date)
+    return results_df, best_result
 
 def plot_optimization_results(results_df):
     pivot_table = results_df.pivot_table(values='total_return', index='sma_short', columns='sma_long', aggfunc='max')
@@ -197,31 +172,4 @@ def plot_optimization_results(results_df):
     plt.ylabel('SMA Short Period')
     plt.xlabel('SMA Long Period')
     plt.show()
-
-if __name__ == "__main__":
-    # Plot optimization results
-    plot_optimization_results(results_df)
-
-
-if __name__ == "__main__":
-    # Extract best parameters
-    best_params = results_df.loc[results_df['total_return'].idxmax()]
-    sma_short = int(best_params['sma_short'])
-    sma_long = int(best_params['sma_long'])
-    rsi_upper = int(best_params['rsi_upper'])
-    rsi_lower = int(best_params['rsi_lower'])
-
-    # Run backtest with best parameters
-    strategy = MomentumTrendStrategy(
-        symbol, start_date, end_date,
-        sma_short=sma_short,
-        sma_long=sma_long,
-        rsi_upper=rsi_upper,
-        rsi_lower=rsi_lower
-    )
-    strategy.backtest()
-    strategy.get_performance_metrics()
-    strategy.plot_equity_curve()
-    strategy.plot_drawdowns()
-
 
