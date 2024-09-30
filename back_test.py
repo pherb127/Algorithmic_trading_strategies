@@ -13,7 +13,7 @@ from momentum_strategy import MomentumTrendStrategy, optimize_parameters, plot_o
 # Define the asset and time period
 symbol = 'AAPL'  # Apple Inc.
 start_date = '2015-01-01'
-end_date = '2024-09-01'
+end_date = '2024-09-30'
 
 # Instantiate the strategy
 strategy = MomentumTrendStrategy(symbol, start_date, end_date)

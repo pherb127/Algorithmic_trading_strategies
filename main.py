@@ -6,12 +6,12 @@ from simulate_trading import SimulatedTradingStrategy
 symbol = 'AAPL'  # Apple Inc.
 # Simulation period
 start_date = '2023-01-01'
-end_date = '2024-04-29'
+end_date = '2024-09-30'
 initial_capital = float(1000)  # Starting with $100
 
 # Optimization period
 opt_start_date = '2021-01-01'
-opt_end_date = '2024-9-29'
+opt_end_date = '2023-01-01'
 
 # Perform optimization to get optimal parameters
 results_df, best_params = optimize_parameters(symbol, opt_start_date, opt_end_date)
