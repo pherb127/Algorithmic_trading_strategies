@@ -21,7 +21,7 @@ class SimulatedTradingStrategy(MomentumTrendStrategy):
             price = self.data['Close'].iloc[i]
             if position_change == 1:
                 # Enter long position
-                shares_to_buy = float((self.data['Cash'].iloc[i-1] * 0.99) / price)  # Use 99% of cash
+                shares_to_buy = float((self.data['Cash'].iloc[i-1] * 0.1) / price)  # Use 10% of cash
                 cost = shares_to_buy * price
                 self.data.at[self.data.index[i], 'Holdings'] = shares_to_buy
                 self.data.at[self.data.index[i], 'Cash'] = self.data['Cash'].iloc[i-1] - cost - (cost * transaction_cost)
